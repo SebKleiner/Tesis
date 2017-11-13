@@ -109,7 +109,7 @@ g = Map(f, threshold, MoreArgs=list(P=P)) # list of graphs, one for each thresho
 # Compute force-directed network layouts for each threshold value
 # A bit expensive to compute, so run in parallel!
 library(parallel)
-l = mcMap(function(x) layout_with_fr(x, dim=3, niter=150), g, mc.cores=detectCores())
+l = mcMap(function(x) layout_with_fr(x, dim=3, niter=150), g)
 
 sdf = SharedData$new(data.frame(key=paste(seq(0, length(threshold) - 1))), key=~key)
 slider = crosstool(sdf, "transmitter",
